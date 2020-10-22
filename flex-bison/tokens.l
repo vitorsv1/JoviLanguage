@@ -10,12 +10,17 @@ whitespace      [ \t\r\v\f]
 linefeed        \n
 
 %%
-"'"												                            {return ASPAS_SIMPLES;}
+"intorone"                                                                  {return INT;}
+"chartorone"                                                                {return CHAR;}
+"floatorone"                                                                {return FLOAT;}
+"booleanorone"                                                              {return BOOL;}
 "="												                            {return IGUAL;}
 ";"												                            {return	PONTO_V;}
 ":"												                            {return DOIS_P;}
 "("												                            {return ABRE_P;}
 ")"												                            {return FECHA_P;}
+"{"												                            {return ABRE_B;}
+"}"												                            {return FECHA_B;}
 ","												                            {return	VIRGULA;}
 "true"                                                                      {return TRUE;}
 "false"                                                                     {return FALSE;}
