@@ -4,22 +4,24 @@ It's a langueage based on words used by Jovirone, streamer of League of Legends.
 
 ## EBNF
 
-- PROGRAMA = {FUNCAO};
-- FUNCAO = TIPO, IDENTIFICADOR, "(", {TIPO, IDENTIFICADOR, ","}, ")", BLOCO;
+- PROGRAMA = FUNCAO, WHILE_N, SE, DECLARA, PRINTA;
+- WHILE_N = WHILE, "(", EXPRESSAO_COMPARACAO, ")", BLOCO
+
+- FUNCAO = DEF, IDENTIFICADOR, "(", {TIPO, IDENTIFICADOR, ","}, ")", BLOCO;
 - BLOCO = "{" , DENTROBLOCO , "}";
 - DENTROBLOCO = NOOP | DECLARA | ATRIBUI | PRINTA | SE | SENAO | BLOCO | ENQUANTO | TIPO, IDENTIFICADOR | "retornab", "(", EXPRESSAO_COMPARACAO, ")", NOOP;
 
 - TIPO = "intorone" | "floatorone" | "booleanorone";
-
+- DEF = "deforonte"
 - NOOP = ";";
 
 - DECLARA = (TIPO), IDENTIFICADOR, NOOP;
 - ATRIBUI = IDENTIFICADOR, "=", EXPRESSAO, NOOP;
-- PRINTA = "chama", "(", EXPRESSAO, ")", NOOP;
+- PRINTA = "chamanoprint", "(", EXPRESSAO, ")", NOOP;
 
 - SE = "dale", "(", EXPRESSAO_COMPARACAO ")", DENTROBLOCO, {SENAO};
 - SENAO = "dele", DENTROBLOCO;
-- ENQUANTO = "dole", "(", EXPRESSAO_COMPARACAO, ")", DENTROBLOCO;
+- ENQUANTO = "whilezada", "(", EXPRESSAO_COMPARACAO, ")", DENTROBLOCO;
 
 - EXPRESSAO_COMPARACAO = EXPRESSAO | {("==" | ">" | "<"), EXPRESSAO};
 - EXPRESSAO = TERMO, {("+" | "||" | "-"), TERMO};
