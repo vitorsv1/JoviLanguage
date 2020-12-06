@@ -18,7 +18,7 @@ linefeed        \n
 ")"												                            {return FECHA_P;}
 ","												                            {return	VIRGULA;}
 "true"                                                                      {return TRUE;}
-"false"                                                                     {return FALSE;}
+"falsorone"                                                                     {return FALSE;}
 "deforone"                                                                  {return DEF;}
 "dale"											                            {return IF;}
 "dele"											                            {return ELIF;}
