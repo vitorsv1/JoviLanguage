@@ -1,35 +1,30 @@
 Jovi EBNF
 
-It's a langueage based on words used by Jovirone, streamer of League of Legends.
+It's a langueage based in Julia using words by the one and only - Jovirone, streamer of League of Legends.
 
 ## EBNF
 
-- PROGRAMA = FUNCAO, WHILE_N, SE, DECLARA, PRINTA;
-- WHILE_N = WHILE, "(", EXPRESSAO_COMPARACAO, ")", BLOCO
-
-- FUNCAO = DEF, IDENTIFICADOR, "(", {TIPO, IDENTIFICADOR, ","}, ")", BLOCO;
-- BLOCO = "{" , DENTROBLOCO , "}";
-- DENTROBLOCO = NOOP | DECLARA | ATRIBUI | PRINTA | SE | SENAO | BLOCO | ENQUANTO | TIPO, IDENTIFICADOR | "retornab", "(", EXPRESSAO_COMPARACAO, ")", NOOP;
-
-- TIPO = "intorone" | "floatorone" | "booleanorone";
-- DEF = "deforonte"
-- NOOP = ";";
-
-- DECLARA = (TIPO), IDENTIFICADOR, NOOP;
-- ATRIBUI = IDENTIFICADOR, "=", EXPRESSAO, NOOP;
-- PRINTA = "chamanoprint", "(", EXPRESSAO, ")", NOOP;
-
-- SE = "dale", "(", EXPRESSAO_COMPARACAO ")", DENTROBLOCO, {SENAO};
-- SENAO = "dele", DENTROBLOCO;
-- ENQUANTO = "whilezada", "(", EXPRESSAO_COMPARACAO, ")", DENTROBLOCO;
-
-- EXPRESSAO_COMPARACAO = EXPRESSAO | {("==" | ">" | "<"), EXPRESSAO};
-- EXPRESSAO = TERMO, {("+" | "||" | "-"), TERMO};
-- TERMO = FATOR, {("/" | "*" | "&&" | "**" | "//" | "%"), FATOR};
-- FATOR = (("+", "-"), FATOR) | NUMERO | FLOAT | "(",EXPRESSAO,")" | IDENTIFICADOR, { "(", { EXPRESSAO_COMPARACAO, "," } ")"} | "true" | "false" ;
-
-- IDENTIFICADOR = CHAR, {DIGITO | CHAR | "_" };
-- FLOAT = NUMERO, ".", NUMERO;
-- NUMERO = DIGITO, {DIGITO};
-- CHAR = (a | ... | z | A | ... | Z);
-- DIGITO = (1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0);
+- PROGRAM = { FUNCTION | COMMAND } ;
+- BLOCK = { COMMAND } ;
+- FUNCTION = "functionzada", IDENTIFIER, "(", (IDENTIFIER, "::", TYPE), {"," , IDENTIFIER, "::", TYPE}, ")", "::", TYPE, "\n", BLOCK, "end" ;
+- FUNCALL = IDENTIFIER, "(", (REL_EXPRESSION), {"," , REL_EXPRESSION}, ")" ;
+- COMMAND = ( λ | ASSIGNMENT | PRINT | IF | WHILE | LOCAL | RETURN | FUNCALL), "\n" ;
+- RETURN = "retornab", REL_EXPRESSION ;
+- LOCAL = "local", IDENTIFIER, "::", TYPE;
+- ASSIGNMENT = IDENTIFIER, "=", REL_EXPRESSION | "receba", "(", ")" ;
+- PRINT = "chamanoprint", "(", REL_EXPRESSION, ")" ;
+- EXPRESSION = TERM, { ("+" | "-" | "||"), TERM } ;
+- REL_EXPRESSION = EXPRESSION, { ("==" | ">" | "<"), EXPRESSION };
+- WHILE = "whilezada", REL_EXPRESSION, "\n", BLOCK, "end";
+- IF = "sedale", REL_EXPRESSION, "\n", BLOCK, { ELSEIF | ELSE }, "end";
+- ELSEIF = "senaodele", REL_EXPRESSION, "\n", BLOCK, { ELSEIF | ELSE };
+- ELSE = "doly", "\n", BLOCK;
+- TERM = FACTOR, { ("*" | "/" | "&&"), FACTOR } ;
+- FACTOR = (("+" | "-" | "!"), FACTOR) | NUMBER | BOOLEAN | STRING | "(", REL_EXPRESSION, ")" | IDENTIFIER | FUNCALL;
+- IDENTIFIER = LETTER, { LETTER | DIGIT | "_" } ;
+- TYPE = "intorone" | "stringorone" | "booleanorone"; 
+- NUMBER = DIGIT, { DIGIT } ;
+- STRING = '"', {.*?}, '"';
+- BOOLEAN = "truedatrue" | "falsorone";
+- LETTER = ( a | ... | z | A | ... | Z ) ;
+- DIGIT = ( 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 ) ;

@@ -1,0 +1,13 @@
+functionzada soma(x::intorone)::intorone
+    local a::intorone
+    a = x + 1
+    chamanoprint(a)
+    sedale a < 5
+        a = soma(a)
+    end
+    retornab a
+end
+local a::intorone
+a = 1
+a = soma(a)
+chamanoprint(a)
